@@ -43,6 +43,7 @@ async function startServer() {
           res.status(500).json({ message: error.message });
         }
       });
+    }}
 
 
 
@@ -88,7 +89,7 @@ app.put('/updateTodo/:id', async(req,res)=>{
     }
     
 })
-
+startServer();
 const port = process.env.PORT || 3000
 app.listen(port, ()=>{
     console.log(`http://localhost:${port}`)
