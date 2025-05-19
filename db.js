@@ -48,7 +48,7 @@ const {MongoClient, ObjectId, ServerApiVersion} = require('mongodb')
 //     getDatabase, ObjectId
 // }
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 const uri = 'mongodb+srv://joney:1245@cluster0.5cxgcfn.mongodb.net/TodoOwn?retryWrites=true&w=majority&appName=Cluster0';
 
@@ -82,4 +82,4 @@ function getDatabase() {
   return database;
 }
 
-module.exports = { connectToDatabase, getDatabase };
+module.exports = { connectToDatabase, getDatabase, ObjectId};
