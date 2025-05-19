@@ -26,18 +26,19 @@ const client = new MongoClient(uri, {
       deprecationErrors: true,
     }
   });
+
   async function getDatabase() {
     try {
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
       // Send a ping to confirm a successful connection
-      database = await client.db("TodoOwn").command({ ping: 1 });
+      database = await client.db("TodoOwn")
+      console.log('✅ Connected to MongoDB Atlas')
       console.log("Pinged your deployment. You successfully connected to MongoDB!");
       return database
-    } finally {
-      // Ensures that the client will close when you finish/error
-      await client.close();
-    }
+    }  catch (err) {
+        console.error('❌ MongoDB connection failed:', err);
+      }
   }
 
 module.exports = {
