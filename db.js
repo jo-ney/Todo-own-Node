@@ -24,7 +24,6 @@ let database
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
     tls: true, // ✅ force TLS
-    useUnifiedTopology: true,
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
