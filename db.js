@@ -19,7 +19,7 @@ const {MongoClient, ObjectId, ServerApiVersion} = require('mongodb')
 
 
 //second
-const uri = 'mongodb+srv://joney:1245@cluster0.5cxgcfn.mongodb.net/TodoOwn?retryWrites=true&w=majority&appName=Cluster0'
+const uri = 'mongodb+srv://joney:1245@cluster0.5cxgcfn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 let database
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -35,7 +35,7 @@ const client = new MongoClient(uri, {
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
       // Send a ping to confirm a successful connection
-      database = await client.db()
+      database = await client.db('TodoOwn')
       console.log('✅ Connected to MongoDB Atlas')
       console.log("Pinged your deployment. You successfully connected to MongoDB!");
       return database
