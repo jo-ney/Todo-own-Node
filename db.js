@@ -39,7 +39,6 @@ const client = new MongoClient(url, {
       await client.close();
     }
   }
-  run().catch(console.dir);
 
 module.exports = {
     getDatabase, ObjectId
