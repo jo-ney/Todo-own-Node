@@ -16,10 +16,10 @@ const {MongoClient, ObjectId, ServerApiVersion} = require('mongodb')
 //     getDatabase, ObjectId
 // }
 
-const url = 'mongodb+srv://joney:1245@cluster0.5cxgcfn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-
+const uri = 'mongodb+srv://joney:1245@cluster0.5cxgcfn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+let database
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(url, {
+const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -31,9 +31,9 @@ const client = new MongoClient(url, {
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
       // Send a ping to confirm a successful connection
-      const db = await client.db("TodoOwn").command({ ping: 1 });
+      database = await client.db("TodoOwn").command({ ping: 1 });
       console.log("Pinged your deployment. You successfully connected to MongoDB!");
-      return db
+      return database
     } finally {
       // Ensures that the client will close when you finish/error
       await client.close();
