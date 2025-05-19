@@ -23,6 +23,8 @@ const uri = 'mongodb+srv://joney:1245@cluster0.5cxgcfn.mongodb.net/?retryWrites=
 let database
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
+    tls: true, // ✅ force TLS
+    useUnifiedTopology: true,
     serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -31,6 +33,7 @@ const client = new MongoClient(uri, {
   });
 
   async function getDatabase() {
+    console.log('noob')
     try {
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
