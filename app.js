@@ -9,19 +9,43 @@ app.use(cors())
 const db = require('./db')
 db.connectToDatabase()
 const ObjectId = db.ObjectId
-//read
-app.get('/todoOwn', async(req,res)=>{
-    try{
-        let database = await db.getDatabase()
-        let collection = await database.collection("list")
-        let cursor = collection.find({})
-        let list = await cursor.toArray()
-        res.json(list)
-    } catch(error){
-        console.log(error)
-        res.status(500).json({message: error.message})
-    }
-})
+
+// //read
+// app.get('/todoOwn', async(req,res)=>{
+//     try{
+//         let database = await db.getDatabase()
+//         let collection = await database.collection("list")
+//         let cursor = collection.find({})
+//         let list = await cursor.toArray()
+//         res.json(list)
+//     } catch(error){
+//         console.log(error)
+//         res.status(500).json({message: error.message})
+//     }
+// })
+
+
+// ✅ Wrap everything inside async startServer
+async function startServer() {
+    try {
+      await db.connectToDatabase(); // Wait for DB to connect
+  
+      // ✅ Routes go here only AFTER DB connection
+      // Read
+      app.get('/todoOwn', async (req, res) => {
+        try {
+          let database = db.getDatabase();
+          let collection = database.collection('list');
+          let list = await collection.find({}).toArray();
+          res.json(list);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: error.message });
+        }
+      });
+
+
+
 //create
 app.post('/addTodo', async(req, res)=>{
     try{
