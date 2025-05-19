@@ -14,7 +14,7 @@ async function getDatabase(){
       })
     
       const client = await client0.connect()
-    database = await client.db('TodoOwn')
+    database = await client.db('TodoOwn').command({ ping: 1 })
 
     if(!database)
         console.log('Database not connected!')
