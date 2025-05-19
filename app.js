@@ -43,7 +43,10 @@ async function startServer() {
           res.status(500).json({ message: error.message });
         }
       });
-    }}
+    } catch(err){
+        console.error('kiiih')
+    }
+}
 
 
 
