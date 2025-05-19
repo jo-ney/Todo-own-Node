@@ -7,6 +7,7 @@ app.use(express.json())
 app.use(cors())
 
 const db = require('./db')
+db.connectToDatabase()
 const ObjectId = db.ObjectId
 //read
 app.get('/todoOwn', async(req,res)=>{
